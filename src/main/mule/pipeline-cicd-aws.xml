@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="06d178c0-618f-4f2a-8106-2998e6b19fb5" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="pipeline-cicd-awsFlow" doc:id="403dd467-2759-4501-a8c7-a4cf14f4bd8d" >
+		<http:listener doc:name="Listener" doc:id="c4e34702-92fd-4e85-93f5-2896dedbdf93" config-ref="HTTP_Listener_config" path="/demopipeline"/>
+		<set-payload value='#["pipeline has connected app has deployed in cloud hub "]' doc:name="Set Payload" doc:id="700de7f5-2310-429d-9ce9-5d425abe73ca" />
+	</flow>
+</mule>
